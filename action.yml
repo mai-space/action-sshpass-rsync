@@ -1,4 +1,4 @@
-name: RSYNC via SSHPASS
+name: Deploy over RSYNC via SSHPASS
 inputs:
   host:
     description: "Host"

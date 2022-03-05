@@ -1,4 +1,4 @@
-# action-sshpass-rsync
+# Deploy over RSYNC via SSHPASS
 
 Github Action to deploy via rsync and sshpass
 in order to enable deployments on hosts, which don't support key based ssh

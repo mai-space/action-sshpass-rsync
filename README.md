@@ -47,9 +47,9 @@ Feel free to contribute.
 
 ## Disclaimer
 Parts of this action are heavily inspired by 
-[matheusvanzan / sshpass-action](https://github.com/matheusvanzan/sshpass-action/)
+[matheusvanzan/sshpass-action](https://github.com/matheusvanzan/sshpass-action/)
 and
-[D3rHase / rsync-deploy-action](https://github.com/D3rHase/rsync-deploy-action).
+[D3rHase/rsync-deploy-action](https://github.com/D3rHase/rsync-deploy-action).
 
 I have looked up how to make my own action there and build upon their code.
 So please give them some love.

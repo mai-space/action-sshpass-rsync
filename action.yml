@@ -1,0 +1,38 @@
+name: RSYNC via SSHPASS
+inputs:
+  host:
+    description: "Host"
+    required: true
+  port:
+    description: "Port"
+    required: false
+    default: 22
+  user:
+    description: "Username"
+    required: true
+  pass:
+    description: "Password"
+    required: false
+  local:
+    description: 'Local path to deploy'
+    required: false
+    default: '*'
+  remote:
+    description: 'Remote destination'
+    required: false
+    default: '~/'
+
+description: 'SSHPASS Github Action'
+branding:
+  icon: 'upload-cloud'
+  color: 'purple'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    HOST: ${{ inputs.host }}
+    PORT: ${{ inputs.port }}
+    USER: ${{ inputs.user }}
+    PASS: ${{ inputs.pass }}
+    LOKAL: ${{ inputs.local }}
+    REMOTE: ${{ inputs.remote }}

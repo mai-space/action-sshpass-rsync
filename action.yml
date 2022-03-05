@@ -1,0 +1,50 @@
+name: Deploy over RSYNC via SSHPASS
+inputs:
+  host:
+    description: "Host"
+    required: true
+  port:
+    description: "Port"
+    required: false
+    default: "22"
+  user:
+    description: "Username"
+    required: true
+  pass:
+    description: "Password"
+    required: false
+  key:
+    description: "(Optional) Private key"
+    required: false
+  local:
+    description: 'Local path to deploy'
+    required: false
+    default: '*'
+  remote:
+    description: 'Remote destination'
+    required: false
+    default: '~/'
+  runBeforeDeployment:
+    description: "Commands that shall be executed before deployment"
+    required: false
+  runAfterDeployment:
+    description: "Commands that shall be executed after deployment"
+    required: false
+
+description: 'SSHPASS Github Action'
+branding:
+  icon: 'upload-cloud'
+  color: 'purple'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    HOST: ${{ inputs.host }}
+    PORT: ${{ inputs.port }}
+    USER: ${{ inputs.user }}
+    PASS: ${{ inputs.pass }}
+    KEY: ${{ inputs.key }}
+    LOKAL: ${{ inputs.local }}
+    REMOTE: ${{ inputs.remote }}
+    RUNBEFORE: ${{ inputs.runBeforeDeployment }}
+    RUNAFTER: ${{ inputs.runAfterDeployment }}

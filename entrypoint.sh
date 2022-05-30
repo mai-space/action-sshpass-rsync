@@ -30,7 +30,7 @@ then # Password
 
 
   echo "> Deploying now"
-  sshpass -p $INPUT_PASS rsync -alveh --progress --stats --delete "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE
+  sshpass -p $INPUT_PASS rsync --progress --stats -a -v -e "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE --delete
 
   [[ -z "${INPUT_RUNAFTER}" ]] && {
     echo "> Executing commands after deployment"

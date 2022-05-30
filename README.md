@@ -9,6 +9,7 @@
         <img alt="https://badges.pufler.dev/created/inf166/action-sshpass-rsync?style=for-the-badge&color=green" src="https://badges.pufler.dev/created/inf166/action-sshpass-rsync?style=for-the-badge&color=green">
     </a>
 </p>
+
 # Deploy over RSYNC via SSHPASS
 
 Github Action to deploy via rsync and sshpass

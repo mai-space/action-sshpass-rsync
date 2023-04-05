@@ -13,6 +13,7 @@ in order to enable deployments on hosts, which don't support key based ssh
     port: ${{ secrets.DEPLOY_PORT }}
     pass: ${{ secrets.DEPLOY_PASS }}
     local: "path/of/your/local/mashine"
+    exclude: "path/to/exclude/"
     remote: "path/where/to/deploy/to"
     runBeforeDeployment: |
       cd somewhere/
@@ -38,6 +39,7 @@ Feel free to contribute.
     port: ${{ secrets.DEPLOY_PORT }}
     key: ${{ secrets.PRIVATE_KEY }}
     local: "path/of/your/local/mashine"
+    exclude: "path/to/exclude/"
     remote: "path/where/to/deploy/to"
     runBeforeDeployment: |
       cd somewhere/

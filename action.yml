@@ -20,6 +20,9 @@ inputs:
     description: 'Local path to deploy'
     required: false
     default: '*'
+  exclude:
+    description: 'Paths to exclude from rsync'
+    required: false
   remote:
     description: 'Remote destination'
     required: false
@@ -44,7 +47,8 @@ runs:
     USER: ${{ inputs.user }}
     PASS: ${{ inputs.pass }}
     KEY: ${{ inputs.key }}
-    LOKAL: ${{ inputs.local }}
+    LOCAL: ${{ inputs.local }}
+    EXCLUDE: ${{ inputs.exclude }}
     REMOTE: ${{ inputs.remote }}
     RUNBEFORE: ${{ inputs.runBeforeDeployment }}
     RUNAFTER: ${{ inputs.runAfterDeployment }}

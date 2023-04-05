@@ -11,6 +11,7 @@ echo "> Starting ${GITHUB_WORKFLOW}:${GITHUB_ACTION}"
 # echo "INPUT_PASS: ${INPUT_PASS}"
 # echo "INPUT_KEY: ${INPUT_KEY}"
 # echo "INPUT_LOCAL: ${INPUT_LOCAL}"
+# echo "INPUT_EXCLUDE: ${INPUT_EXCLUDE}"
 # echo "INPUT_REMOTE: ${INPUT_REMOTE}"
 # echo "INPUT_RUN_BEFORE: ${INPUT_RUNBEFORE}"
 # echo "INPUT_RUN_AFTER: ${INPUT_RUNAFTER}"
@@ -30,7 +31,12 @@ then # Password
 
 
   echo "> Deploying now"
-  sshpass -p $INPUT_PASS rsync -avhz --progress --stats -e  "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE --delete-during
+  if [ -z "$INPUT_EXCLUDE" ]
+  then
+    sshpass -p $INPUT_PASS rsync -avhz --progress --stats -e  "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE --delete-during --exclude=$INPUT_EXCLUDE
+  else
+    sshpass -p $INPUT_PASS rsync -avhz --progress --stats -e  "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE --delete-during
+  fi
 
   [[ -z "${INPUT_RUNAFTER}" ]] && {
     echo "> Executing commands after deployment"
@@ -59,7 +65,13 @@ else # Private key
   }
 
   echo "> Deploying now"
-  sshpass -e rsync -avhz --progress --stats -e "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE --delete-during
+  if [ -z "$INPUT_EXCLUDE" ]
+  then
+    sshpass -e rsync -avhz --progress --stats -e "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE --delete-during --exclude=$INPUT_EXCLUDE
+  else
+    sshpass -e rsync -avhz --progress --stats -e "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE --delete-during
+  fi
+
 
   [[ -z "${INPUT_RUNAFTER}" ]] && {
     echo "> Executing commands after deployment"

@@ -5,7 +5,7 @@ LABEL "com.github.actions.description"="RSYNC OVER SSHPASS"
 LABEL "com.github.actions.icon"="upload-cloud"
 LABEL "com.github.actions.color"="purple"
 
-LABEL "repository"="https://github.com/Inf166/action-sshpass-rsync"
+LABEL "repository"="https://github.com/mai-space/action-sshpass-rsync"
 LABEL "homepage"="https://maispace.de"
 LABEL "maintainer"="Joel Mai <joel@maispace.de>"
 

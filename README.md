@@ -6,7 +6,7 @@ in order to enable deployments on hosts, which don't support key based ssh
 ## Usage
 ```yml
 - name: Deploy to Server
-  uses: inf166/action-sshpass-rsync@v1
+  uses: mai-space/action-sshpass-rsync@v1
   with:
     host: ${{ secrets.DEPLOY_HOST }}
     user: ${{ secrets.DEPLOY_USER }}
@@ -32,7 +32,7 @@ Feel free to contribute.
 
 ```yml
 - name: Deploy to Server
-  uses: inf166/action-sshpass-rsync@v1
+  uses: mai-space/action-sshpass-rsync@v1
   with:
     host: ${{ secrets.DEPLOY_HOST }}
     user: ${{ secrets.DEPLOY_USER }}

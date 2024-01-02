@@ -20,8 +20,8 @@ inputs:
     description: 'Local path to deploy'
     required: false
     default: '*'
-  exclude:
-    description: 'Paths to exclude from rsync'
+  extra:
+    description: 'Extra switches to add to rsync'
     required: false
   remote:
     description: 'Remote destination'

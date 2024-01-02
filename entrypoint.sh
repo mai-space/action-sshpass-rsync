@@ -31,11 +31,11 @@ then # Password
 
 
   echo "> Deploying now"
-  if [ -z "$INPUT_EXCLUDE" ]
+  if [ -z "$INPUT_EXTRA" ]
   then
-    sshpass -p $INPUT_PASS rsync -avhz --progress --stats -e  "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE --delete-during --exclude=$INPUT_EXCLUDE
+    sshpass -p $INPUT_PASS rsync -avhz --progress --stats -e  "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE $INPUT_EXTRA
   else
-    sshpass -p $INPUT_PASS rsync -avhz --progress --stats -e  "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE --delete-during
+    sshpass -p $INPUT_PASS rsync -avhz --progress --stats -e  "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE
   fi
 
   [[ -z "${INPUT_RUNAFTER}" ]] && {
@@ -65,11 +65,11 @@ else # Private key
   }
 
   echo "> Deploying now"
-  if [ -z "$INPUT_EXCLUDE" ]
+  if [ -z "$INPUT_EXTRA" ]
   then
-    sshpass -e rsync -avhz --progress --stats -e "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE --delete-during --exclude=$INPUT_EXCLUDE
+    sshpass -e rsync -avhz --progress --stats -e "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE --exclude=$INPUT_EXTRA
   else
-    sshpass -e rsync -avhz --progress --stats -e "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE --delete-during
+    sshpass -e rsync -avhz --progress --stats -e "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE
   fi
 
 

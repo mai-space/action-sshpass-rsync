@@ -33,9 +33,10 @@ then # Password
   echo "> Deploying now"
   if [ -z "$INPUT_EXTRA" ]
   then
-    sshpass -p $INPUT_PASS rsync -avhz $INPUT_EXTRA --progress --stats -e  "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE
+    EXTRA="$INPUT_EXTRA"
+    sh -c "sshpass -p $INPUT_PASS rsync -avhz $EXTRA --progress --stats -e  'ssh -p $INPUT_PORT' $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE"
   else
-    sshpass -p $INPUT_PASS rsync -avhz --progress --stats -e  "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE
+    sh -c "sshpass -p $INPUT_PASS rsync -avhz --progress --stats -e  'ssh -p $INPUT_PORT' $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE"
   fi
 
   [[ -z "${INPUT_RUNAFTER}" ]] && {
@@ -67,9 +68,10 @@ else # Private key
   echo "> Deploying now"
   if [ -z "$INPUT_EXTRA" ]
   then
-    sshpass -e rsync -avhz --progress $INPUT_EXTRA --stats -e "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE
+    EXTRA="$INPUT_EXTRA"
+    sh -c "sshpass -e rsync -avhz --progress $EXTRA --stats -e 'ssh -p $INPUT_PORT' $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE"
   else
-    sshpass -e rsync -avhz --progress --stats -e "ssh -p $INPUT_PORT" $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE
+    sh -c "sshpass -e rsync -avhz --progress --stats -e 'ssh -p $INPUT_PORT' $GITHUB_WORKSPACE/$INPUT_LOCAL $INPUT_USER@$INPUT_HOST:$INPUT_REMOTE"
   fi
 
 

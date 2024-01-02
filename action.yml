@@ -48,7 +48,7 @@ runs:
     PASS: ${{ inputs.pass }}
     KEY: ${{ inputs.key }}
     LOCAL: ${{ inputs.local }}
-    EXCLUDE: ${{ inputs.exclude }}
+    EXTRA: ${{ inputs.extra }}
     REMOTE: ${{ inputs.remote }}
     RUNBEFORE: ${{ inputs.runBeforeDeployment }}
     RUNAFTER: ${{ inputs.runAfterDeployment }}
